@@ -33,8 +33,21 @@ class Informacion:
 def mostrar_vuelos_disponibles(vuelos):
     print("Vuelos disponibles:")
     for vuelo in vuelos:
-        print(f"Número de vuelo: {vuelo.numero_vuelo}, Origen: {vuelo.origen}, Destino: {vuelo.destino}, Fecha: {vuelo.fecha}, Hora de salida: {vuelo.salida}, Hora de llegada: {vuelo.llegada}, Precio: {vuelo.precio}")
-#el print por srt
+        print(vuelo)
+
+def pedir_datos_pasajero():
+    nombre = input("Ingrese su nombre: ")
+    apellidos = input("Ingrese su apellido: ")
+    edad = int(input("Ingrese su edad: "))
+    telefono = input("Ingrese su número de teléfono: ")
+    correo = input("Ingrese su correo electrónico: ")
+    return Pasajero(nombre, apellidos, edad, telefono, correo)
+
+def reserva():
+    numero = input("Ingrese el número de vuelo que desea reservar: ")
+    cantidad = int(input("Ingrese la cantidad de asientos que desea reservar (máximo 10): "))
+    return numero, cantidad
+
 def reservar_vuelo(lista, numero_vuelo, pasajero, cantidad):
     #se puede hacer funcion reservar numero de asientos
     for v in lista:
@@ -65,21 +78,11 @@ def main():
 
     if opcion == '1':
         mostrar_vuelos_disponibles(vuelos)
+        
     elif opcion == '2':
-        #extraer método, hacer metodo  
-        n = input("Ingrese su nombre: ")
-        a = input("Ingrese su apellido: ")
-        e = int(input("Ingrese su edad: "))
-        t = input("Ingrese su número de teléfono: ")
-        c = input("Ingrese su correo electrónico: ")
-
-        pasajero = Pasajero(n, a, e, t, c)
-
-        #extraer método, hacer metodo
-        numero = input("Ingrese el número de vuelo que desea reservar: ")
-        cantidad = int(input("Ingrese la cantidad de asientos que desea reservar (máximo 10): "))
-
-        reservar_vuelo(vuelos, numero, pasajero, cantidad)
+        pasajero = pedir_datos_pasajero()
+        numero_vuelo, cantidad_asientos = reserva()
+        reservar_vuelo(vuelos, numero_vuelo, pasajero, cantidad_asientos)
     else:
         print("Opción no válida.")
 
