@@ -6,9 +6,12 @@ class Vuelo:
         self.origen = origen
         self.destino = destino
         self.fecha = fecha
-        self.salida = salida
-        self.llegada = llegada
+        self.salida = salida #cambio
+        self.llegada = llegada #cambio
         self.precio = precio
+
+    def __str__(self):
+        return (f"Número de vuelo: {self.numero_vuelo}, Origen: {self.origen}, destino: {self.destino}, Fecha: {self.fecha}, hora de salida: {self.salida}, hora de 		llegada: {self.llegada}, precio: {self.precio}€")
 
 class Pasajero:
     def __init__(self, nombre, apellido, edad, telefono, correo):
@@ -17,6 +20,9 @@ class Pasajero:
         self.edad = edad
         self.telefono = telefono
         self.correo = correo
+    
+    def __str__(self):
+        return f"{self.nombre} {self.apellido}, Edad: {self.edad}, Tel: {self.telefono}, Email: {self.correo}"
 
 class Informacion:
     def __init__(self, vuelo, pasajero, asientos):
@@ -28,9 +34,9 @@ def mostrar_vuelos_disponibles(vuelos):
     print("Vuelos disponibles:")
     for vuelo in vuelos:
         print(f"Número de vuelo: {vuelo.numero_vuelo}, Origen: {vuelo.origen}, Destino: {vuelo.destino}, Fecha: {vuelo.fecha}, Hora de salida: {vuelo.salida}, Hora de llegada: {vuelo.llegada}, Precio: {vuelo.precio}")
-
+#el print por srt
 def reservar_vuelo(lista, numero_vuelo, pasajero, cantidad):
-    
+    #se puede hacer funcion reservar numero de asientos
     for v in lista:
         if v.numero_vuelo == numero_vuelo:
             if cantidad <= 0:
@@ -60,7 +66,7 @@ def main():
     if opcion == '1':
         mostrar_vuelos_disponibles(vuelos)
     elif opcion == '2':
-        #extraer método
+        #extraer método, hacer metodo  
         n = input("Ingrese su nombre: ")
         a = input("Ingrese su apellido: ")
         e = int(input("Ingrese su edad: "))
@@ -69,7 +75,7 @@ def main():
 
         pasajero = Pasajero(n, a, e, t, c)
 
-        #extraer método
+        #extraer método, hacer metodo
         numero = input("Ingrese el número de vuelo que desea reservar: ")
         cantidad = int(input("Ingrese la cantidad de asientos que desea reservar (máximo 10): "))
 
